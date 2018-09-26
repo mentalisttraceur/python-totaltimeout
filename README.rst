@@ -14,7 +14,8 @@ Versioning
 This library's version numbers follow the `SemVer 2.0.0 specification
 <https://semver.org/spec/v2.0.0.html>`_.
 
-The current version number is available in the variable ``__version__``.
+The current version number is available in the variable ``__version__``,
+as is normal for Python modules.
 
 
 Installation
@@ -28,7 +29,7 @@ Installation
 Usage
 -----
 
-Import the `Timeout` class.
+Import the ``Timeout`` class.
 
 .. code:: python
 
@@ -39,7 +40,7 @@ Waiting in a "timed loop" for an API with retries:
 .. code:: python
 
     for time_left in Timeout(SOME_NUMBER_OF_SECONDS):
-         reply = requests.get(some_flaky_api, timeout=time_left)
+         reply = requests.get(some_flaky_api_url, timeout=time_left)
          if reply.status == 200:
              break
          time.sleep(some_retry_delay)
