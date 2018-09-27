@@ -45,7 +45,7 @@ class Timeout(object):
     def __repr__(self):
         if self._now is _now:
             return 'Timeout(%r)' % (self.time_left(),)
-        return ('Timeout(%r, now=%r)' % (self.time_left(), self._now))
+        return 'Timeout(%r, now=%r)' % (self.time_left(), self._now)
 
     def __iter__(self):
         return TimeoutIterator(self)
