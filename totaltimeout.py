@@ -12,11 +12,11 @@
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 
-"""Use one total timeout over many operations
+"""Spread one timeout over many operations
 
 Correctly and efficiently spreads one timeout over many steps by
 recalculating the time remaining after some amount of waiting has
-already happened, to pass an adjusted timeout to the next call.
+already happened, to pass an adjusted timeout to the next step.
 """
 
 
