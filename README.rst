@@ -44,7 +44,19 @@ for unreliable APIs that may either hang or need retries):
          reply = requests.get(some_flaky_api_url, timeout=time_left)
          if reply.status == 200:
              break
-         time.sleep(some_retry_delay)
+
+Same as above, but with a wait between retries:
+
+.. code:: python
+
+    timeout = Timeout(SOME_NUMBER_OF_SECONDS)
+    for time_left in timeout:
+         reply = requests.get(some_flaky_api_url, timeout=time_left)
+         if reply.status == 200:
+             break
+         if timeout.time_left() <= RETRY_DELAY:
+             break
+         time.sleep(RETRY_DELAY)
 
 Waiting for multiple tasks to finish:
 
