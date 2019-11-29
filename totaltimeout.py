@@ -56,7 +56,7 @@ class Timeout(object):
         now = self._now()
         elapsed = now - self._start
         remaining = self._timeout - elapsed
-        return max(remaining, 0)
+        return max(remaining, 0.0)
 
 
 class TimeoutIterator(object):
