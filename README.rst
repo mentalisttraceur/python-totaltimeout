@@ -71,8 +71,7 @@ Waiting for multiple tasks to finish:
     # it is as if all threads got a 10 second wait in parallel,
     # and we waited only as long as the slowest one to finish.
 
-Waiting for multiple tasks within each iteration of a "timed loop"
-(combining the above two examples):
+Waiting for multiple tasks within each iteration of a "timed loop":
 
 .. code:: python
 
@@ -81,7 +80,7 @@ Waiting for multiple tasks within each iteration of a "timed loop"
          foo.some_work(timeout=time_left)
          # The first timeout can be *either* be the for loop value or
          # the ``time_left()`` method. The rest *have to be* the latter.
-         foo.more_work(timeout=timeout.time_left())
+         foo.some_more_work(timeout=timeout.time_left())
          some_other_work(timeout=timeout.time_left())
 
 
