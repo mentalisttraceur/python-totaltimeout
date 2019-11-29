@@ -67,7 +67,7 @@ Waiting for multiple tasks to finish:
     my_thread_bar.join(timeout.time_left())
     my_thread_qux.join(timeout.time_left())
     # Wait only as long as the slowest
-    # one to finish, as if all threads
+    # thread to finish, as if they all
     # got a 10 second wait in parallel.
 
 Waiting for multiple tasks within each iteration of a "timed loop":
