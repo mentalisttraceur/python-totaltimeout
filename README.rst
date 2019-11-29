@@ -35,7 +35,8 @@ Import the ``Timeout`` class.
 
     from totaltimeout import Timeout
 
-Waiting in a "timed loop" for an API with retries:
+Waiting in a "timed loop" for an API with retries (useful
+for unreliable APIs that may either hang or need retries):
 
 .. code:: python
 
