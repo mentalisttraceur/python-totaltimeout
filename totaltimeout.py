@@ -36,7 +36,7 @@ class Timeout(object):
     """Counts down for the total timeout duration given"""
 
     def __init__(self, timeout, now=None):
-        self._timeout = timeout
+        self._timeout = float(timeout)
         if now is None:
             now = _now
         self._now = now
