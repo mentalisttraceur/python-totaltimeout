@@ -66,10 +66,9 @@ Waiting for multiple tasks to finish:
     my_thread_foo.join(timeout.time_left())
     my_thread_bar.join(timeout.time_left())
     my_thread_qux.join(timeout.time_left())
-    # If the first join takes x seconds, the next join gets
-    # (10 - x), but x seconds have already passed. So in the end,
-    # it is as if all threads got a 10 second wait in parallel,
-    # and we waited only as long as the slowest one to finish.
+    # Wait only as long as the slowest
+    # one to finish, as if all threads
+    # got a 10 second wait in parallel.
 
 Waiting for multiple tasks within each iteration of a "timed loop":
 
