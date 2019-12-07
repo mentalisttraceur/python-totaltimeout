@@ -26,7 +26,7 @@ except ImportError:
     from time import time as _now
 
 
-__version__ = '1.0.2'
+__version__ = '1.0.3'
 __all__ = ('Timeout',)
 
 
@@ -68,7 +68,7 @@ class TimeoutIterator(object):
         self._timeout = timeout
 
     def __repr__(self):
-        return 'TimeoutIterator(' + self._timeout + ')'
+        return 'TimeoutIterator(' + repr(self._timeout) + ')'
 
     def __iter__(self):
         return self
