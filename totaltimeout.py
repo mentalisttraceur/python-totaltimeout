@@ -85,3 +85,14 @@ class TimeoutIterator(object):
         return time_left
 
     next = __next__  # Python 2 used `next` instead of ``__next__``
+
+
+# Compatibility for MicroPython and maybe others:
+try:
+    Timeout.__name__
+except AttributeError:
+    Timeout.__name__ = 'Timeout'
+try:
+    TimeoutIterator.__name__
+except AttributeError:
+    TimeoutIterator.__name__ = 'TimeoutIterator'
