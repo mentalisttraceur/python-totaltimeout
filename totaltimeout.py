@@ -26,7 +26,7 @@ except ImportError:
     from time import time as _now
 
 
-__version__ = '1.0.3'
+__version__ = '1.1.0'
 __all__ = ('Timeout',)
 
 
