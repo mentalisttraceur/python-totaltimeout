@@ -30,6 +30,10 @@ __version__ = '1.0.3'
 __all__ = ('Timeout',)
 
 
+def _name(obj):
+    return type(obj).__name__
+
+
 class Timeout(object):
     # pylint: disable=too-few-public-methods
     # pylint: disable=bad-option-value,useless-object-inheritance
@@ -43,10 +47,11 @@ class Timeout(object):
         self._start = now()
 
     def __repr__(self):
+        name = _name(self)
         time_left = repr(self.time_left())
         if self._now is _now:
-            return 'Timeout(' + time_left + ')'
-        return 'Timeout(' + time_left + ', now=' + repr(self._now) + ')'
+            return name + '(' + time_left + ')'
+        return name + '(' + time_left + ', now=' + repr(self._now) + ')'
 
     def __iter__(self):
         return TimeoutIterator(self)
@@ -68,7 +73,7 @@ class TimeoutIterator(object):
         self._timeout = timeout
 
     def __repr__(self):
-        return 'TimeoutIterator(' + repr(self._timeout) + ')'
+        return _name(self) + '(' + repr(self._timeout) + ')'
 
     def __iter__(self):
         return self
