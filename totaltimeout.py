@@ -87,7 +87,7 @@ class TimeoutIterator(object):
     next = __next__  # Python 2 used `next` instead of ``__next__``
 
 
-# Compatibility for MicroPython and maybe others:
+# Portability to some minimal Python implementations:
 try:
     Timeout.__name__
 except AttributeError:
