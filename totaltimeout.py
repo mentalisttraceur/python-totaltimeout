@@ -34,6 +34,15 @@ def _name(obj):
     return type(obj).__name__
 
 
+def _repr(obj, *args, **kwargs):
+    arguments = []
+    for argument in args:
+        arguments.append(repr(argument))
+    for name in kwargs:
+        arguments.append(name + '=' + repr(kwargs[name]))
+    return _name(obj) + '(' + ', '.join(arguments) + ')'
+
+
 class Timeout(object):
     # pylint: disable=too-few-public-methods
     # pylint: disable=bad-option-value,useless-object-inheritance
@@ -47,11 +56,9 @@ class Timeout(object):
         self._start = now()
 
     def __repr__(self):
-        name = _name(self)
-        time_left = repr(self.time_left())
         if self._now is _now:
-            return name + '(' + time_left + ')'
-        return name + '(' + time_left + ', now=' + repr(self._now) + ')'
+            return _repr(self, self.time_left())
+        return _repr(self, self.time_left(), now=self._now)
 
     def __iter__(self):
         return TimeoutIterator(self)
@@ -73,7 +80,7 @@ class TimeoutIterator(object):
         self._timeout = timeout
 
     def __repr__(self):
-        return _name(self) + '(' + repr(self._timeout) + ')'
+        return _repr(self, self._timeout)
 
     def __iter__(self):
         return self
