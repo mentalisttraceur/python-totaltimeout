@@ -101,7 +101,4 @@ try:
     Timeout.__name__
 except AttributeError:
     Timeout.__name__ = 'Timeout'
-try:
-    TimeoutIterator.__name__
-except AttributeError:
     TimeoutIterator.__name__ = 'TimeoutIterator'
