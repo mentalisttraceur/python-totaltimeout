@@ -20,10 +20,7 @@ already happened, to pass an adjusted timeout to the next step.
 """
 
 
-try:
-    from time import monotonic as _now
-except ImportError:
-    from time import time as _now
+from time import time as _now
 
 
 __version__ = '2.0.0'
