@@ -23,7 +23,7 @@ already happened, to pass an adjusted timeout to the next step.
 from time import time as _now
 
 
-__version__ = '2.0.0'
+__version__ = '2.0.1'
 __all__ = ('Timeout',)
 
 

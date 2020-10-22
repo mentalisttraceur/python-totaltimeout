@@ -74,8 +74,8 @@ Waiting for multiple tasks within each iteration of a "timed loop":
     timeout = Timeout(SOME_NUMBER_OF_SECONDS)
     for time_left in timeout:
          foo.some_work(timeout=time_left)
-         # The first timeout can be *either* be the for loop value or
-         # the ``time_left()`` method. The rest *have to be* the latter.
+         # The first timeout can be *either* the for loop value or the
+         # ``time_left()`` method. The rest *have to be* the latter.
          foo.some_more_work(timeout=timeout.time_left())
          some_other_work(timeout=timeout.time_left())
 
