@@ -26,7 +26,7 @@ except ImportError:
     from time import time as _now
 
 
-__version__ = '1.1.0'
+__version__ = '2.0.0'
 __all__ = ('Timeout',)
 
 
@@ -48,17 +48,19 @@ class Timeout(object):
     # pylint: disable=bad-option-value,useless-object-inheritance
     """Counts down for the total timeout duration given"""
 
-    def __init__(self, timeout, now=None):
+    def __init__(self, timeout, start=None, now=None):
         self._timeout = timeout
         if now is None:
             now = _now
         self._now = now
-        self._start = now()
+        if start is None:
+            start = now()
+        self._start = start
 
     def __repr__(self):
         if self._now is _now:
-            return _repr(self, self.time_left())
-        return _repr(self, self.time_left(), now=self._now)
+            return _repr(self, self.time_left(), start=self._start)
+        return _repr(self, self.time_left(), start=self._start, now=self._now)
 
     def __iter__(self):
         return TimeoutIterator(self)
