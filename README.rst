@@ -79,6 +79,31 @@ Waiting for multiple tasks within each iteration of a "timed loop":
          foo.some_more_work(timeout=timeout.time_left())
          some_other_work(timeout=timeout.time_left())
 
+Using a monotonic clock instead of the wall clock:
+
+.. code:: python
+
+    import time
+
+    timeout = Timeout(10.0, now=time.monotonic)
+
+You can also set the starting point in time of the timeout,
+which is useful when you need a repeating timeout on an
+interval, and you don't want that interval to drift or you
+you want that interval to stay faithful to the wall clock
+time:
+
+.. code:: python
+
+    beginning_of_minute = (time.now() // 60) * 60
+    while True:
+        timeout = Timeout(60, start=beginning_of_minute)
+        metric_values = []
+        for time_left in timeout:
+            metric_values.append(get_metric())
+        average_and_report(metric_values)
+        beginning_of_minute += 60
+
 
 Explanation
 ~~~~~~~~~~~
@@ -114,32 +139,3 @@ You should get output kinda like this::
     2.9768632212653756
     1.9745127055794
     0.9699955033138394
-
-
-Advanced Usage Notes
-~~~~~~~~~~~~~~~~~~~~
-
-``Timeout`` uses ``time.monotonic`` as the default time function,
-falling back to ``time.time`` if ``time.monotonic`` is unavailable.
-
-You can override this by passing in a callable as the second argument.
-
-For example, if you've installed the
-`monotonic backport <https://pypi.org/project/monotonic>`_:
-
-.. code:: python
-
-    from monotonic import monotonic
-
-    timeout = Timeout(10.0, now=monotonic)
-
-Any callables that return time in seconds as floating point values
-are supported as part of the interface subject to SemVer backwards
-compability guarantees.
-
-However, **any** callables that return time values that can be
-subtracted from each other to produce duration values which in turn can
-be subtracted from each other and compared to zero should work, and
-seconds are expected only because Python's idiomatic unit for timeouts
-is seconds. If the ``timeout``, ``now``, and usage are consistent, any
-choice that fits these criteria is likely to work.
