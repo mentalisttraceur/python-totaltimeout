@@ -95,14 +95,15 @@ time:
 
 .. code:: python
 
-    beginning_of_minute = (time.now() // 60) * 60
+    INTERVAL = 60
+    beginning_of_interval = (time.now() // INTERVAL) * INTERVAL
     while True:
-        timeout = Timeout(60, start=beginning_of_minute)
+        timeout = Timeout(INTERVAL, start=beginning_of_interval)
         metric_values = []
         for time_left in timeout:
             metric_values.append(get_metric())
         average_and_report(metric_values)
-        beginning_of_minute += 60
+        beginning_of_interval += INTERVAL
 
 
 Explanation
