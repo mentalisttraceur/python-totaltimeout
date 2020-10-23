@@ -20,7 +20,7 @@ already happened, to pass an adjusted timeout to the next step.
 """
 
 
-from time import time as _now
+from time import time as _time
 
 
 __version__ = '2.0.1'
@@ -48,14 +48,14 @@ class Timeout(object):
     def __init__(self, timeout, start=None, now=None):
         self._timeout = timeout
         if now is None:
-            now = _now
+            now = _time
         self._now = now
         if start is None:
             start = now()
         self._start = start
 
     def __repr__(self):
-        if self._now is _now:
+        if self._now is _time:
             return _repr(self, self._timeout, start=self._start)
         return _repr(self, self._timeout, start=self._start, now=self._now)
 
