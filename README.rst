@@ -85,7 +85,7 @@ Using a monotonic clock instead of the wall clock:
 
     import time
 
-    timeout = Timeout(10.0, now=time.monotonic)
+    timeout = Timeout(10.0, clock=time.monotonic)
 
 You can also set the starting point in time of the timeout,
 which is useful when you need a repeating timeout on an

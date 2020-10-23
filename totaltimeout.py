@@ -23,7 +23,7 @@ already happened, to pass an adjusted timeout to the next step.
 from time import time as _time
 
 
-__version__ = '2.0.1'
+__version__ = '3.0.0'
 __all__ = ('Timeout',)
 
 
@@ -45,26 +45,26 @@ class Timeout(object):
     # pylint: disable=bad-option-value,useless-object-inheritance
     """Counts down for the total timeout duration given"""
 
-    def __init__(self, timeout, start=None, now=None):
+    def __init__(self, timeout, start=None, clock=None):
         self._timeout = timeout
-        if now is None:
-            now = _time
-        self._now = now
+        if clock is None:
+            clock = _time
+        self._clock = clock
         if start is None:
-            start = now()
+            start = clock()
         self._start = start
 
     def __repr__(self):
-        if self._now is _time:
+        if self._clock is _time:
             return _repr(self, self._timeout, start=self._start)
-        return _repr(self, self._timeout, start=self._start, now=self._now)
+        return _repr(self, self._timeout, start=self._start, clock=self._clock)
 
     def __iter__(self):
         return TimeoutIterator(self)
 
     def time_left(self):
         """Returns time remaining in the timeout"""
-        now = self._now()
+        now = self._clock()
         elapsed = now - self._start
         remaining = self._timeout - elapsed
         return max(remaining, 0)
