@@ -78,8 +78,8 @@ Same as above, but with a wait between retries:
          reply = requests.get(some_flaky_api_url, timeout=time_left)
          if reply.status == 200:
              break
-         # If you need to get the time remaining again in the
-         # same loop, you have to use the .time_left() method:
+         # If you need to get the remaining time again in the same
+         # loop iteration, you have to use the .time_left() method:
          if timeout.time_left() <= RETRY_DELAY:
              break
          time.sleep(RETRY_DELAY)
