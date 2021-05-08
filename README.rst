@@ -76,7 +76,7 @@ Same as above, but with a wait between retries:
 
     timeout = Timeout(SOME_NUMBER_OF_SECONDS)
     for time_left in timeout:
-         reply = requests.get(some_flaky_api_url, timeout=time_left)
+         reply = requests.get(api_url, timeout=time_left)
          if reply.status == 200:
              break
          # If you need to get the remaining time again in the same
