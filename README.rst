@@ -18,8 +18,8 @@ and inside it you do something like
     qux(timeout)
 
 *Wrong!* The right way is to subtract the time spent in the first
-function to get just the time left over to pass as the timeout to
-the second function. And ``totaltimeout`` can do that for you!
+function, and pass just the remaining time as the timeout to the
+second function. And ``totaltimeout`` can do that for you!
 
 Or maybe you want to put a retry loop around a function that takes
 a timeout?
