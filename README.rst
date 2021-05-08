@@ -1,11 +1,39 @@
 totaltimeout
 ============
 
-Spread one timeout over many operations.
+*Code timeouts correctly, without the hassle.*
 
-Correctly and efficiently spreads one timeout over many steps by
-recalculating the time remaining after some amount of waiting has
-already happened, to pass an adjusted timeout to the next step.
+So you're writing a function that takes a timeout?
+
+.. code:: python
+
+    def foo(timeout):
+        ...
+
+And inside it you do something like this?
+
+.. code:: python
+
+    def foo(timeout):
+        bar(timeout)
+        qux(timeout)
+
+*Wrong!* The right way is to subtract the time spent in the first
+function to get just the time left over to pass as the timeout to
+the second function. And ``totaltimeout`` can do that for you!
+
+Or maybe you want to put a retry loop around a function that takes
+a timeout?
+
+.. code:: python
+
+    while ...:
+        foo(timeout)
+
+The right way is to set a timeout for the whole loop, subtract the
+time each iteration took, pass the remaining time to the function,
+and break out once we're out of time. And ``totaltimeout`` can do
+that for you!
 
 
 Versioning

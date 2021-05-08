@@ -12,11 +12,12 @@
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 
-"""Spread one timeout over many operations
+"""Code timeouts correctly, without the hassle.
 
-Correctly and efficiently spreads one timeout over many steps by
-recalculating the time remaining after some amount of waiting has
-already happened, to pass an adjusted timeout to the next step.
+``totaltimeout`` robusly, efficiently, and cleanly abstracts away
+the boilerplate of calculating the time remaining on a timeout,
+after some time has already passed. This helps combine multiple
+operations which take timeout arguments correctly.
 """
 
 
