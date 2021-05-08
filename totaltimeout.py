@@ -43,9 +43,19 @@ def _repr(obj, *args, **kwargs):
 class Timeout(object):
     # pylint: disable=too-few-public-methods
     # pylint: disable=bad-option-value,useless-object-inheritance
-    """Counts down for the total timeout duration given"""
+    """Timeout object that helps cover many operations with one timeout."""
 
     def __init__(self, timeout, start=None, clock=None):
+        """Initialize the timeout object.
+
+        Arguments:
+            timeout: Time duration before the timeout expires.
+            start (optional): Time from which the timeout starts.
+                Defaults to the result of calling ``clock``.
+            clock (optional): Function (or other callable) that
+                is called with no arguments to get the current
+                time. Defaults to ``time.time``.
+        """
         self._timeout = timeout
         if clock is None:
             clock = _time
@@ -55,15 +65,17 @@ class Timeout(object):
         self._start = start
 
     def __repr__(self):
+        """Represent this timeout object as an unambiguous string."""
         if self._clock is _time:
             return _repr(self, self._timeout, start=self._start)
         return _repr(self, self._timeout, start=self._start, clock=self._clock)
 
     def __iter__(self):
+        """Get a TimeoutIterator for this timeout object."""
         return TimeoutIterator(self)
 
     def time_left(self):
-        """Returns time remaining in the timeout"""
+        """Return the time remaining in this timeout object."""
         now = self._clock()
         elapsed = now - self._start
         remaining = self._timeout - elapsed
@@ -73,18 +85,30 @@ class Timeout(object):
 class TimeoutIterator(object):
     # pylint: disable=too-few-public-methods
     # pylint: disable=bad-option-value,useless-object-inheritance
-    """Loops on a Timeout object, yielding the time remaining"""
+    """Iterator that yields the time remaining until its timeout expires."""
 
     def __init__(self, timeout):
+        """Initialize the timeout iterator.
+
+        Arguments:
+            timeout: Timeout object instance to iterate on.
+        """
         self._timeout = timeout
 
     def __repr__(self):
+        """Represent this timeout iterator as an unambiguous string."""
         return _repr(self, self._timeout)
 
     def __iter__(self):
+        """Return this timeout iterator itself."""
         return self
 
     def __next__(self):
+        """Return the time remaining in this iterator's timeout object.
+
+        Raises:
+            StopIteration: If no time is left in the timeout object.
+        """
         time_left = self._timeout.time_left()
         if time_left <= 0:
             raise StopIteration
