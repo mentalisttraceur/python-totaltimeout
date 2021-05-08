@@ -33,8 +33,8 @@ The right way is to set a timeout for the whole loop, subtract the
 time each iteration took, pass the remaining time to the function,
 and break out once we're out of time.
 
-``totaltimeout`` lets you code timeouts the right way like that,
-without all that boilerplate for calculating the remaining time.
+``totaltimeout`` lets you code timeouts the right way, without
+writing all that boilerplate to calculate the remaining time.
 
 Versioning
 ----------
