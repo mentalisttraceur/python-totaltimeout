@@ -65,7 +65,7 @@ for unreliable APIs that may either hang or need retries):
 .. code:: python
 
     for time_left in Timeout(SOME_NUMBER_OF_SECONDS):
-         reply = requests.get(some_flaky_api_url, timeout=time_left)
+         reply = requests.get(api_url, timeout=time_left)
          if reply.status == 200:
              break
 
