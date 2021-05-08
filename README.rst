@@ -19,7 +19,7 @@ and inside it you do something like
 
 *Wrong!* The right way is to subtract the time spent in the first
 function, and pass just the remaining time as the timeout to the
-second function. And ``totaltimeout`` can do that for you!
+second function.
 
 Or maybe you want to put a retry loop around a function that takes
 a timeout?
@@ -31,9 +31,10 @@ a timeout?
 
 The right way is to set a timeout for the whole loop, subtract the
 time each iteration took, pass the remaining time to the function,
-and break out once we're out of time. And ``totaltimeout`` can do
-that for you!
+and break out once we're out of time.
 
+``totaltimeout`` lets you code timeouts the right way like that,
+without all that boilerplate for calculating the remaining time.
 
 Versioning
 ----------
