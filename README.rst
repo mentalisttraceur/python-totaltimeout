@@ -114,11 +114,9 @@ Using a monotonic clock instead of the wall clock:
 
     timeout = Timeout(10.0, clock=time.monotonic)
 
-You can also set the starting point in time of the timeout,
-which is useful when you need a repeating timeout on an
-interval, and you don't want that interval to drift or you
-you want that interval to stay faithful to the wall clock
-time:
+You can also set the starting time of the timeout. This is
+useful if you need a repeating timeout on an interval, and
+you want that interval to stay synchronized with the clock:
 
 .. code:: python
 
