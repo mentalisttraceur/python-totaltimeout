@@ -131,39 +131,3 @@ time:
             metric_values.append(get_metric())
         average_and_report(metric_values)
         beginning_of_interval += INTERVAL
-
-
-Explanation
-~~~~~~~~~~~
-
-If you're confused about what's going on, run this example program:
-
-.. code:: python
-
-    from time import sleep
-
-    from totaltimeout import Timeout
-
-    def demo(timeout_in_seconds):
-        timeout = Timeout(timeout_in_seconds)
-        for time_left in timeout:
-            print(time_left)
-            sleep(1)
-            print(timeout.time_left())
-            sleep(1)
-
-    if __name__ == '__main__':
-        demo(10)
-
-You should get output kinda like this::
-
-    9.99990844912827
-    8.996184696443379
-    7.992705063894391
-    6.990415567532182
-    5.983945298939943
-    4.981594786979258
-    3.979213748127222
-    2.9768632212653756
-    1.9745127055794
-    0.9699955033138394
