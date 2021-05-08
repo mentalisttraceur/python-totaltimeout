@@ -25,7 +25,7 @@ from time import time as _time
 
 
 __version__ = '3.0.0'
-__all__ = ('Timeout',)
+__all__ = ('Timeout', 'TimeoutIterator')
 
 
 def _name(obj):
