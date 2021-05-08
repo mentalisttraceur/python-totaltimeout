@@ -89,9 +89,9 @@ Waiting for multiple tasks to finish:
 .. code:: python
 
     timeout = Timeout(10.0)
-    my_thread_foo.join(timeout.time_left())
-    my_thread_bar.join(timeout.time_left())
-    my_thread_qux.join(timeout.time_left())
+    thread_foo.join(timeout.time_left())
+    thread_bar.join(timeout.time_left())
+    thread_qux.join(timeout.time_left())
     # Works out almost as if we waited 10
     # seconds for each thread in parallel.
 
@@ -101,8 +101,8 @@ Waiting for multiple tasks within each iteration of a "timed loop":
 
     timeout = Timeout(SOME_NUMBER_OF_SECONDS)
     for time_left in timeout:
-         foo.some_work(timeout=time_left)
-         foo.some_more_work(timeout=timeout.time_left())
+         some_work(timeout=time_left)
+         some_more_work(timeout=timeout.time_left())
          some_other_work(timeout=timeout.time_left())
 
 Using a monotonic clock instead of the wall clock:
