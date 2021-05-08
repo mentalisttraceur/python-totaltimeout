@@ -12,7 +12,7 @@
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 
-"""Code timeouts correctly, without the hassle.
+"""Get timeouts right, without the hassle.
 
 ``totaltimeout`` robusly, efficiently, and cleanly abstracts away
 the boilerplate of calculating the time remaining on a timeout,

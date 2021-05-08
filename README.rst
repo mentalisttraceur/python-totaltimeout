@@ -1,7 +1,7 @@
 totaltimeout
 ============
 
-*Code timeouts correctly, without the hassle.*
+*Get timeouts right, without the hassle.*
 
 So you're writing a function that takes a timeout
 
