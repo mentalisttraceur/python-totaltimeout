@@ -79,6 +79,8 @@ Same as above, but with a wait between retries:
          reply = requests.get(some_flaky_api_url, timeout=time_left)
          if reply.status == 200:
              break
+         # If you need to get the time remaining again in the
+         # same loop, you have to use the .time_left() method:
          if timeout.time_left() <= RETRY_DELAY:
              break
          time.sleep(RETRY_DELAY)
@@ -91,9 +93,8 @@ Waiting for multiple tasks to finish:
     my_thread_foo.join(timeout.time_left())
     my_thread_bar.join(timeout.time_left())
     my_thread_qux.join(timeout.time_left())
-    # Wait only as long as the slowest
-    # thread to finish, as if they all
-    # got a 10 second wait in parallel.
+    # The timeouts work out as if we waited
+    # 10 seconds each thread *in parallel*.
 
 Waiting for multiple tasks within each iteration of a "timed loop":
 
@@ -102,8 +103,6 @@ Waiting for multiple tasks within each iteration of a "timed loop":
     timeout = Timeout(SOME_NUMBER_OF_SECONDS)
     for time_left in timeout:
          foo.some_work(timeout=time_left)
-         # The first timeout can be *either* the for loop value or the
-         # ``time_left()`` method. The rest *have to be* the latter.
          foo.some_more_work(timeout=timeout.time_left())
          some_other_work(timeout=timeout.time_left())
 
