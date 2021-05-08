@@ -14,10 +14,10 @@
 
 """Get timeouts right, without the hassle.
 
-``totaltimeout`` robusly, efficiently, and cleanly abstracts away
+``totaltimeout`` robustly, efficiently, and cleanly abstracts away
 the boilerplate of calculating the time remaining on a timeout,
-after some time has already passed. This helps combine multiple
-operations which take timeout arguments correctly.
+after some time has already passed. This helps correctly combine
+multiple operations which take timeout arguments correctly.
 """
 
 
