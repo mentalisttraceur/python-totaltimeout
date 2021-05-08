@@ -17,7 +17,7 @@
 ``totaltimeout`` robustly, efficiently, and cleanly abstracts away
 the boilerplate of calculating the time remaining on a timeout,
 after some time has already passed. This helps correctly combine
-multiple operations which take timeout arguments correctly.
+multiple operations which take timeout arguments.
 """
 
 
