@@ -22,7 +22,7 @@ function, and pass just the remaining time as the timeout to the
 second function.
 
 Or maybe you want to put a retry loop around a function that takes
-a timeout?
+a timeout:
 
 .. code:: python
 
