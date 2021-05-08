@@ -14,9 +14,8 @@ and inside it you do something like
 
 .. code:: python
 
-    def foo(timeout):
-        bar(timeout)
-        qux(timeout)
+    bar(timeout)
+    qux(timeout)
 
 *Wrong!* The right way is to subtract the time spent in the first
 function to get just the time left over to pass as the timeout to
