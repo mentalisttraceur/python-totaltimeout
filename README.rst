@@ -3,14 +3,14 @@ totaltimeout
 
 *Code timeouts correctly, without the hassle.*
 
-So you're writing a function that takes a timeout?
+So you're writing a function that takes a timeout
 
 .. code:: python
 
     def foo(timeout):
         ...
 
-And inside it you do something like this?
+and inside it you do something like
 
 .. code:: python
 
