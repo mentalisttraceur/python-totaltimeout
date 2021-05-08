@@ -130,9 +130,9 @@ synchronized with the clock:
         average_and_report(metric_values)
         beginning_of_interval += INTERVAL
 
-Finally, `totaltimeout`` can be an ergonomic way to put a time limit
-on a loop even if the code in the loop does not support timeouts, so
-long as each iteration does not block for too long:
+Finally, ``totaltimeout`` can be an ergonomic way to put a time
+limit on a loop even if the code in the loop does not support
+timeouts, so long as each iteration does not block for too long:
 
 .. code:: python
 
