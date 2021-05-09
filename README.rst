@@ -114,10 +114,9 @@ Using a monotonic clock instead of the wall clock:
 
     timeout = Timeout(10.0, clock=time.monotonic)
 
-You can also set the starting time of the timeout. This is great for
-testing, for copying or restoring timeouts across networks or
-storage, and for having timeouts that count down from a well-known
-point in time instead of whenever exactly the code executes:
+You can also set the starting time of the timeout. This lets timeouts
+count down from a well-known point in time, which can be useful for
+testing, for synchronizing timeouts across networks, and so on:
 
 .. code:: python
 
