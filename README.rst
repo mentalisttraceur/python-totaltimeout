@@ -123,6 +123,14 @@ testing, for synchronizing timeouts across networks, and so on:
     start_of_this_minute = (time.now() // 60) * 60
     timeout = Timeout(10.0, start=start_of_this_minute)
 
+.. code:: python
+
+    start = time.now()
+    timeout = Timeout(10.0, start)
+    time.sleep(1)
+    identical_timeout = Timeout(10.0, start)
+    # both timeouts have exactly the same amount of time left
+
 Finally, ``totaltimeout`` can be an ergonomic way to put a time
 limit on a loop even if the code in the loop does not support
 timeouts, so long as each iteration does not block for too long:
