@@ -125,10 +125,10 @@ testing, for synchronizing timeouts across networks, and so on:
 
 .. code:: python
 
-    start = time.now()
-    timeout = Timeout(10.0, start)
+    moment_in_time = time.now()
+    timeout = Timeout(10.0, start=moment_in_time)
     time.sleep(1)
-    identical_timeout = Timeout(10.0, start)
+    identical_timeout = Timeout(10.0, start=moment_in_time)
     # both timeouts have exactly the same amount of time left
 
 Finally, ``totaltimeout`` can be an ergonomic way to put a time
