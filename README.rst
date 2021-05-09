@@ -114,21 +114,15 @@ Using a monotonic clock instead of the wall clock:
 
     timeout = Timeout(10.0, clock=time.monotonic)
 
-You can also set the starting time of the timeout. One use
-for this is a repeating timeout on an interval that stays
-synchronized with the clock:
+You can also set the starting time of the timeout. This is great for
+testing, for copying or restoring timeouts across networks or
+storage, and for having timeouts that count down from a well-known
+point in time instead of whenever exactly the code executes:
 
 .. code:: python
 
-    INTERVAL = 60
-    beginning_of_interval = (time.now() // INTERVAL) * INTERVAL
-    while True:
-        timeout = Timeout(INTERVAL, start=beginning_of_interval)
-        metric_values = []
-        for time_left in timeout:
-            metric_values.append(get_metric(time_left))
-        average_and_report(metric_values)
-        beginning_of_interval += INTERVAL
+    start_of_this_minute = (time.now() // 60) * 60
+    timeout = Timeout(10.0, start=start_of_this_minute)
 
 Finally, ``totaltimeout`` can be an ergonomic way to put a time
 limit on a loop even if the code in the loop does not support
