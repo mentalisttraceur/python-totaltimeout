@@ -9,7 +9,7 @@ after some time has already passed. This helps correctly combine
 multiple operations which take timeout arguments.
 """
 
-__version__ = '3.0.1'
+__version__ = '3.0.2'
 __all__ = ('Timeout', 'TimeoutIterator')
 
 
@@ -30,8 +30,6 @@ def _repr(obj, *args, **kwargs):
 
 
 class Timeout(object):
-    # pylint: disable=too-few-public-methods
-    # pylint: disable=bad-option-value,useless-object-inheritance
     """Timeout object that helps cover many operations with one timeout."""
 
     def __init__(self, timeout, start=None, clock=None):
@@ -72,8 +70,6 @@ class Timeout(object):
 
 
 class TimeoutIterator(object):
-    # pylint: disable=too-few-public-methods
-    # pylint: disable=bad-option-value,useless-object-inheritance
     """Iterator that yields the time remaining until its timeout expires."""
 
     def __init__(self, timeout):
