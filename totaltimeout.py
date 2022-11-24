@@ -99,7 +99,7 @@ class TimeoutIterator(object):
             raise StopIteration
         return time_left
 
-    next = __next__  # Python 2 used `next` instead of ``__next__``
+    next = __next__  # Python 2 used ``next`` instead of ``__next__``.
 
 
 # Portability to some minimal Python implementations:
